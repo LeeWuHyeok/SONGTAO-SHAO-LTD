@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>SONGTAO SHAO LTD</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Inter',sans-serif;
+      background:#050816;
+      color:#ffffff;
+      overflow-x:hidden;
+      line-height:1.7;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    .container{
+      width:100%;
+      max-width:1240px;
+      margin:auto;
+      padding:0 24px;
+    }
+
+    header{
+      position:fixed;
+      width:100%;
+      top:0;
+      z-index:999;
+      backdrop-filter:blur(18px);
+      background:rgba(5,8,22,0.78);
+      border-bottom:1px solid rgba(255,255,255,0.06);
+    }
+
+    .navbar{
+      height:78px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+
+    .logo{
+      font-size:20px;
+      font-weight:800;
+      letter-spacing:1px;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:32px;
+      color:#cbd5e1;
+      font-size:15px;
+    }
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      position:relative;
+      overflow:hidden;
+      background:
+      radial-gradient(circle at top left,#1d4ed8 0%,transparent 32%),
+      radial-gradient(circle at bottom right,#0ea5e9 0%,transparent 26%),
+      #050816;
+    }
+
+    .hero::before{
+      content:'';
+      position:absolute;
+      width:700px;
+      height:700px;
+      background:rgba(59,130,246,0.12);
+      filter:blur(140px);
+      border-radius:50%;
+      top:-250px;
+      right:-180px;
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:2;
+      max-width:760px;
+      padding-top:90px;
+    }
+
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 18px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,0.1);
+      background:rgba(255,255,255,0.04);
+      color:#93c5fd;
+      font-size:13px;
+      margin-bottom:28px;
+    }
+
+    h1{
+      font-size:72px;
+      line-height:1.05;
+      margin-bottom:28px;
+      font-weight:800;
+      letter-spacing:-2px;
+    }
+
+    .hero p{
+      font-size:20px;
+      color:#cbd5e1;
+      max-width:700px;
+      margin-bottom:40px;
+    }
+
+    .buttons{
+      display:flex;
+      flex-wrap:wrap;
+      gap:18px;
+    }
+
+    .btn{
+      padding:15px 32px;
+      border-radius:14px;
+      font-weight:600;
+      transition:0.3s ease;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .btn-primary{
+      background:linear-gradient(135deg,#2563eb,#0ea5e9);
+      color:white;
+      box-shadow:0 10px 30px rgba(37,99,235,0.35);
+    }
+
+    .btn-primary:hover{
+      transform:translateY(-2px);
+    }
+
+    .btn-secondary{
+      border:1px solid rgba(255,255,255,0.12);
+      background:rgba(255,255,255,0.04);
+      color:#e2e8f0;
+    }
+
+    section{
+      padding:110px 0;
+    }
+
+    .section-title{
+      text-align:center;
+      font-size:46px;
+      margin-bottom:18px;
+      font-weight:800;
+    }
+
+    .section-subtitle{
+      max-width:780px;
+      margin:0 auto 70px;
+      text-align:center;
+      color:#94a3b8;
+      font-size:18px;
+    }
+
+    .services-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:28px;
+    }
+
+    .service-card{
+      background:rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:28px;
+      padding:36px;
+      transition:0.35s;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .service-card:hover{
+      transform:translateY(-6px);
+      border-color:rgba(96,165,250,0.4);
+    }
+
+    .service-card h3{
+      font-size:24px;
+      margin-bottom:18px;
+    }
+
+    .service-card p{
+      color:#cbd5e1;
+      font-size:15px;
+    }
+
+    .about{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:70px;
+      align-items:center;
+    }
+
+    .about-text h2{
+      font-size:48px;
+      margin-bottom:26px;
+    }
+
+    .about-text p{
+      color:#cbd5e1;
+      margin-bottom:22px;
+      font-size:17px;
+    }
+
+    .info-boxes{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:20px;
+    }
+
+    .info-box{
+      background:rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:22px;
+      padding:30px;
+    }
+
+    .info-box h4{
+      font-size:28px;
+      color:#60a5fa;
+      margin-bottom:10px;
+    }
+
+    .info-box p{
+      color:#cbd5e1;
+      font-size:14px;
+    }
+
+    .contact-wrapper{
+      max-width:920px;
+      margin:auto;
+      background:linear-gradient(
+        135deg,
+        rgba(37,99,235,0.12),
+        rgba(14,165,233,0.06)
+      );
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:32px;
+      padding:60px;
+      text-align:center;
+    }
+
+    .contact-wrapper h2{
+      font-size:48px;
+      margin-bottom:24px;
+    }
+
+    .contact-item{
+      margin:18px 0;
+      color:#dbeafe;
+      font-size:18px;
+    }
+
+    footer{
+      padding:42px 0;
+      text-align:center;
+      border-top:1px solid rgba(255,255,255,0.08);
+      color:#94a3b8;
+      font-size:14px;
+    }
+
+    @media(max-width:900px){
+
+      h1{
+        font-size:50px;
+      }
+
+      .about{
+        grid-template-columns:1fr;
+      }
+
+      .nav-links{
+        display:none;
+      }
+
+      .hero p{
+        font-size:18px;
+      }
+
+      .contact-wrapper{
+        padding:40px 28px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="container navbar">
+
+    <div class="logo">
+      SONGTAO SHAO LTD
+    </div>
+
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+  </div>
+</header>
+
+<section class="hero">
+
+  <div class="container">
+
+    <div class="hero-content">
+
+      <div class="tag">
+        SOFTWARE DEVELOPMENT · IT CONSULTANCY
+      </div>
+
+      <h1>
+        Scalable Technology Solutions For Modern Digital Businesses
+      </h1>
+
+      <p>
+        SONGTAO SHAO LTD delivers enterprise-grade software development and information technology consultancy services focused on scalable infrastructure, cloud systems, automation, and modern digital operations.
+      </p>
+
+      <div class="buttons">
+        <a href="#contact" class="btn btn-primary">
+          Contact Us
+        </a>
+
+        <a href="#services" class="btn btn-secondary">
+          Our Services
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section id="services">
+
+  <div class="container">
+
+    <h2 class="section-title">
+      Technology Services
+    </h2>
+
+    <p class="section-subtitle">
+      Professional software engineering and IT consulting solutions tailored for startups, international businesses, and modern digital operations.
+    </p>
+
+    <div class="services-grid">
+
+      <div class="service-card">
+        <h3>Custom Software Development</h3>
+
+        <p>
+          Development of scalable web applications, APIs, dashboards, internal business systems, and cloud-native platforms.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <h3>Information Technology Consultancy</h3>
+
+        <p>
+          Strategic consulting services for infrastructure optimization, architecture planning, operational efficiency, and digital transformation.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <h3>Cloud Infrastructure & DevOps</h3>
+
+        <p>
+          CI/CD pipelines, deployment automation, server administration, infrastructure scaling, and cloud environment management.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <h3>Systems Integration</h3>
+
+        <p>
+          API integration, workflow automation, third-party platform connectivity, and backend service interoperability.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section id="about">
+
+  <div class="container about">
+
+    <div class="about-text">
+
+      <h2>
+        About SONGTAO SHAO LTD
+      </h2>
+
+      <p>
+        SONGTAO SHAO LTD is a United Kingdom registered technology company providing software development and information technology consultancy activities.
+      </p>
+
+      <p>
+        We specialize in building reliable software systems, scalable cloud infrastructure, and modern digital solutions for businesses operating globally.
+      </p>
+
+      <p>
+        Our engineering-focused approach emphasizes long-term maintainability, operational reliability, and business-oriented technology implementation.
+      </p>
+
+    </div>
+
+    <div class="info-boxes">
+
+      <div class="info-box">
+        <h4>Software</h4>
+        <p>Business & Domestic Development</p>
+      </div>
+
+      <div class="info-box">
+        <h4>Consulting</h4>
+        <p>Information Technology Services</p>
+      </div>
+
+      <div class="info-box">
+        <h4>Cloud</h4>
+        <p>Infrastructure & Deployment Solutions</p>
+      </div>
+
+      <div class="info-box">
+        <h4>Global</h4>
+        <p>International Remote Collaboration</p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section id="contact">
+
+  <div class="container">
+
+    <div class="contact-wrapper">
+
+      <h2>
+        Contact Information
+      </h2>
+
+      <div class="contact-item">
+        <strong>Company:</strong>
+        SONGTAO SHAO LTD
+      </div>
+
+      <div class="contact-item">
+        <strong>Email:</strong>
+        shaosongtao@live.com
+      </div>
+
+      <div class="contact-item">
+        <strong>Registered Address:</strong><br>
+        71-75 Shelton Street,<br>
+        Covent Garden,<br>
+        London, United Kingdom,<br>
+        WC2H 9JQ
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<footer>
+
+  <div class="container">
+
+    © 2026 SONGTAO SHAO LTD. All rights reserved.
+    <br><br>
+
+    BUSINESS AND DOMESTIC SOFTWARE DEVELOPMENT ·
+    INFORMATION TECHNOLOGY CONSULTANCY ACTIVITIES
+
+  </div>
+
+</footer>
+
+</body>
+</html>
